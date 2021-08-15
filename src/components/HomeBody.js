@@ -16,11 +16,21 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    marginTop: "7%",
+  },
+  row: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  button: {
+    backgroundColor: 'rgb(175, 238, 238)',
     textAlign: 'center',
+    width: "50%",
+    color: "black",
   }
 }));
 
-export default function HomeBody() {
+export default function HomeBody(props) {
   const classes = useStyles();
   const ageGroups = [
       "18-22",
@@ -34,8 +44,8 @@ export default function HomeBody() {
     <div className={classes.root}>
       <Grid container spacing={3} className={classes.container}>
         {ageGroups.map((age, index) => (
-            <Grid item xs={12} container className={classes.container}>
-                <Button>{age}</Button>
+            <Grid item className={classes.row}>
+                <Button className={classes.button} onClick={props.onClick(index)}>{age}</Button>
             </Grid>
         ))}
       </Grid>
